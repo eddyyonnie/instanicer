@@ -18,7 +18,7 @@ class ProfileTestClass(TestCase):
        self.new_profile.delete_profile()
 class ImageTestClass(TestCase):
    def setUp(self):
-       self.new_image=Image(image="image.jpg",image_name="ph",image_caption="photo click",photo_date="last seen")
+       self.new_image=Image(image="image.jpg",image_name="",image_caption="photo click",photo_date="last seen")
    def test_instance(self):
        self.assertTrue(isinstance(self.new_image,Image))
    def test_save_method(self):
@@ -36,9 +36,9 @@ class ImageTestClass(TestCase):
        self.new_image.delete_image()
    def test_update_caption(self):
        self.new_image.save_image()
-       self.new_image = Image.objects.get(id = 3 )
+       self.new_image = Image.objects.get(id = 1 )
        self.new_image.update_caption('changed Image caption')
-       self.updated_image = Image.objects.get(id = 3)
-       self.assertEqual(self.updated_image.image_caption,"changed Image caption")from django.test import TestCase
+       self.updated_image = Image.objects.get(id = 1)
+       self.assertEqual(self.updated_image.image_caption,"changed Image caption")
 
        
