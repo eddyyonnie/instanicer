@@ -48,7 +48,7 @@ class ProfileTestClass(TestCase):
        self.new_image =Image(profile_photo="image.jpeg",bio="image")
    # Testing  instance
    def test_instance(self):
-       self.assertTrue(isinstance(self.new_image,Ima))
+       self.assertTrue(isinstance(self.new_image,Imag))
    #Testing Save Method
    def test_save_method(self):
        self.new_profile.save_profile()
