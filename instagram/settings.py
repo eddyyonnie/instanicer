@@ -112,6 +112,11 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+
+
+
+# it all starts from here
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
