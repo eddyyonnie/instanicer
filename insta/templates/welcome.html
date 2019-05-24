@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>INSTA-NICER</h1>
+<a href="/welcome">view all</a>
+{{block.super}}
+<div class='container'>
+    
+    <div class='col-md-14'>
+        <img src="https://www.redcliffe.co.uk/images/heron.jpg" height=200>
+        <img src="https://gadget247news.com/wp-content/uploads/2019/04/Wall-Murals.jpg" height=200>
+        <img src="http://gaytoo.club/image/custom-wall-paper/custom-wall-paper-picturesque-design-idea-with-download-art-wallpaper-printing-gallery-ingenious-maker-uk-australium-iphone-canada-border-south-africa.jpg" height=200>
+        <img src="https://ae01.alicdn.com/kf/HTB137B7LpXXXXXKaXXXq6xXFXXXz/Custom-Mural-Printed-Wallpaper-Modern-Natural-Landscape-Waterfall-Background-Wall-Painting-Canvas-Living-Room-Wall-Paper.jpg" height=200>
+        <img src="http://kairos.website/wp-content/uploads/2019/03/clever-kids-room-wall-decor-ideas-inspiration-mural-rooms-to-go-project.jpg" height=200>
+        <img src="http://alperturan.info/wp-content/uploads/2019/02/modern-living-room-murals-wonderful-living-room-murals-well-suited-design-living-room-wall-murals-astonishing-decoration-vintage-photo-wallpaper-living-room-modern-wallpaper-murals.jpg" height=200>
+        <img src="http://lorenzonatura.com/wp-content/uploads/2018/08/large-living-room-sofa-3d-stereoscopic-tv-wall-mural-wallpaper-inside-scenery-wallpapers-for-walls-renovation.jpg" height=200>
+        <img src="http://asktosaurabh.co/wp-content/uploads/2019/01/room-wallpaper-landscape-custom-photo-mural-bamboo-scenery-home-improvement-painting-wall-murals-for-walls-3-d-living-wide-wallpapers-design-you.jpg" height=200>
+        
+    
+        {%for i in images%}
+            <img  height="200" width="200" src="{{i.image.url}}" alt="">
+            
+        
+    
+        {%endfor%}
+    </div>
+   
+</div>
+
+    
+{% endblock %}

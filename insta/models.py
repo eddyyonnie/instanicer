@@ -1,0 +1,90 @@
+from django.db import models
+import datetime as dt
+from django.contrib.auth.models import User
+from tinymce.models import HTMLField
+
+# Create your models here.
+class Profile(models.Model):
+    profile_photo = models.ImageField(upload_to = 'images/', blank = True)
+    identity = models.ForeignKey(User,on_delete = models.CASCADE,null = True)
+    bio = models.TextField(max_length = 100)
+
+    def save_profile(self):
+        self.save()
+    def delete_profile(self):
+        self.delete()
+
+    def update_bio(self,bio):
+        self.bio = bio
+        self.save()
+
+    class Meta:
+        ordering=['profile_photo']
+
+    @classmethod
+    def update_profile(cls,profile,update):
+         updated = cls.objects.filter(Image_name=profile).update(name=update)
+         return updated
+
+    @classmethod
+    def search_by_username(cls,search_term):
+        instagram = cls.objects.filter(user__username_icontains=search_term)
+        return instagram
+
+    def __str__(self):
+        return self.bio
+
+class Image(models.Model):
+    image = models.ImageField(upload_to = 'images/', blank = True)
+    image_name = models.CharField(max_length = 30)
+    image_caption = models.TextField(max_length = 200)
+    profile = models.ForeignKey(User,on_delete = models.CASCADE,null = True)
+    photo_date = models.DateTimeField(auto_now_add=True)
+
+
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    def update_caption(self,image_caption):
+        self.image_caption = image_caption
+        self.save()
+
+    @classmethod
+    def get_all(cls):
+        images = cls.objects.all()
+        return images
+
+    @classmethod
+    def get_image(cls, image_id):
+        image = cls.objects.get(id=image_id)
+        return image
+    def __str__(self):
+        return self. image_name
+    
+
+
+class Comment(models.Model):
+    profile_photo = models.ForeignKey(Image,on_delete = models.CASCADE, blank = True,default=0)
+    username = models.ForeignKey(User,on_delete = models.CASCADE,default=1)
+    comment = models.CharField(max_length = 400)
+
+
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
+
+    verbose_name_plural = "Categories"
+
+    def get_comments_by_images(cls, id):
+        comments = Comment.objects.filter(image_pk = id)
+        return comments
+
+class instaLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()
