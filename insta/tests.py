@@ -41,20 +41,4 @@ class ImageTestClass(TestCase):
        self.updated_image = Image.objects.get(id = 3)
        self.assertEqual(self.updated_image.image_caption,"changed Image caption")from django.test import TestCase
 
-       Function that tests whether an image is saved to database
-       '''
-       self.new_image.save_image()
-       images = Image.objects.all()
-       self.assertTrue(len(images) > 0)
-   def test_delete_method(self):
-       '''
-       Function that tests whether an image can be deleted from the database
-       '''
-       self.new_image.save_image()
-       self.new_image.delete_image()
-   def test_update_caption(self):
-       self.new_image.save_image()
-       self.new_image = Image.objects.get(id = 3 )
-       self.new_image.update_caption('changed Image caption')
-       self.updated_image = Image.objects.get(id = 3)
-       self.assertEqual(self.updated_image.image_caption,"changed Image caption")
+       
