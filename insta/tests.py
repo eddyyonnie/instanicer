@@ -18,7 +18,7 @@ class ProfileTestClass(TestCase):
        self.new_profile.delete_profile()
 class ImageTestClass(TestCase):
    def setUp(self):
-       self.new_image=Image(image="image.jpg",image_name="",image_caption="photo click",photo_date="last seen")
+       self.new_image=Image(image="image.jpg",image_name="race",image_caption="eddy car",photo_date="can remember")
    def test_instance(self):
        self.assertTrue(isinstance(self.new_image,Image))
    def test_save_method(self):
